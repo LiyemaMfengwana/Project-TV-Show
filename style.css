@@ -1,3 +1,399 @@
-#root {
-  color: red;
+/* =========================
+   Base / Reset
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f3f4f6;
+  color: #1f2937;
+  line-height: 1.5;
+}
+
+/* =========================
+   Header
+========================= */
+
+.site-header {
+  background: linear-gradient(135deg, #111827, #1f2937);
+  color: #fff;
+  padding: 24px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: clamp(24px, 4vw, 32px);
+  letter-spacing: -0.5px;
+}
+
+/* =========================
+   Buttons
+========================= */
+
+.back-button {
+  border: none;
+  background: #fff;
+  color: #1f2937;
+  padding: 11px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.back-button:hover {
+  background: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+.back-button:active {
+  transform: translateY(0);
+}
+
+/* =========================
+   Controls / Search
+========================= */
+
+.controls {
+  max-width: 1200px;
+  margin: 28px auto 12px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.controls label {
+  font-weight: 700;
+  color: #374151;
+}
+
+.controls input,
+.controls select {
+  padding: 11px 13px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fff;
+  color: #1f2937;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.controls input:focus,
+.controls select:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+#show-search {
+  width: 320px;
+  max-width: 100%;
+}
+
+/* =========================
+   Status
+========================= */
+
+.status-text {
+  max-width: 1200px;
+  margin: 16px auto;
+  padding: 0 20px;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+/* =========================
+   Grids
+========================= */
+
+.shows-grid,
+.episodes-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* =========================
+   Cards
+========================= */
+
+.show-card,
+.episode-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.show-card:hover,
+.episode-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.13);
+}
+
+/* =========================
+   Show Cards
+========================= */
+
+.show-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.show-card > img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+  background: #e5e7eb;
+  transition: transform 0.35s ease;
+}
+
+.show-card:hover > img {
+  transform: scale(1.02);
+}
+
+.show-details {
+  padding: 20px;
+}
+
+.show-title {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0 0 14px;
+  text-align: left;
+  font-size: 22px;
+  line-height: 1.25;
+  font-weight: 700;
+  cursor: pointer;
+  color: #111827;
+  transition: color 0.2s ease;
+}
+
+.show-title:hover {
+  color: #4f46e5;
+  text-decoration: none;
+}
+
+.show-details p {
+  line-height: 1.6;
+  margin: 8px 0;
+  color: #4b5563;
+}
+
+.show-summary {
+  margin-top: 16px;
+  color: #374151;
+}
+
+/* =========================
+   Episode Controls
+========================= */
+
+.episode-controls {
+  width: 100%;
+}
+
+.episode-controls h2 {
+  width: 100%;
+  margin-top: 0;
+  color: #111827;
+}
+
+/* =========================
+   Episode Cards
+========================= */
+
+.episode-card {
+  padding: 18px;
+}
+
+.episode-card h2 {
+  font-size: 18px;
+  line-height: 1.35;
+  text-align: center;
+  margin: 0 0 16px;
+  color: #111827;
+}
+
+.episode-card img {
+  width: 100%;
+  display: block;
+  border-radius: 9px;
+  background: #e5e7eb;
+}
+
+.episode-card p {
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+/* =========================
+   Footer
+========================= */
+
+footer {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 25px 20px;
+  text-align: center;
+  color: #6b7280;
+  border-top: 1px solid #e5e7eb;
+}
+
+footer a {
+  color: #4f46e5;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: #3730a3;
+  text-decoration: underline;
+}
+
+/* =========================
+   Tablet
+========================= */
+
+@media (max-width: 900px) {
+  .shows-grid,
+  .episodes-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .show-card > img {
+    height: 320px;
+  }
+}
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 600px) {
+  .site-header {
+    padding: 20px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .site-header h1 {
+    font-size: 26px;
+  }
+
+  .back-button {
+    width: 100%;
+  }
+
+  .controls {
+    margin-top: 20px;
+    padding: 0 15px;
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .controls input,
+  .controls select,
+  #show-search {
+    width: 100%;
+  }
+
+  .shows-grid,
+  .episodes-grid {
+    grid-template-columns: 1fr;
+    padding: 15px;
+    gap: 18px;
+  }
+
+  .show-card > img {
+    height: 400px;
+  }
+
+  .show-details {
+    padding: 18px;
+  }
+
+  .show-title {
+    font-size: 21px;
+  }
+
+  .episode-card {
+    padding: 15px;
+  }
+
+  footer {
+    margin-top: 20px;
+    padding: 20px 15px;
+  }
+}
+
+/* =========================
+   Very Small Screens
+========================= */
+
+@media (max-width: 400px) {
+  .show-card > img {
+    height: 330px;
+  }
+
+  .site-header h1 {
+    font-size: 23px;
+  }
+}
+
+/* =========================
+   Accessibility
+========================= */
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgba(99, 102, 241, 0.45);
+  outline-offset: 2px;
+}
+
+/* Reduce animations for users
+   who prefer less motion */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
 }
