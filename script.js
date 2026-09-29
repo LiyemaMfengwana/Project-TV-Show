@@ -93,6 +93,20 @@ function displayShows(showList) {
   });
 }
 
+function filterShows(searchTerm) {
+  return allShows.filter((show) => {
+    const showName = show.name.toLowerCase();
+    const showGenres = show.genres.join(" ").toLowerCase();
+    const showSummary = removeHtml(show.summary).toLowerCase();
+
+    return (
+      showName.includes(searchTerm) ||
+      showGenres.includes(searchTerm) ||
+      showSummary.includes(searchTerm)
+    );
+  });
+}
+
 function showShowsPage() {
   const backButton = document.getElementById("back-to-shows");
   const controls = document.getElementById("controls");
@@ -147,19 +161,7 @@ function showShowsPage() {
   showSearch.addEventListener("input", function () {
     const searchTerm = showSearch.value.toLowerCase().trim();
 
-    const filteredShows = allShows.filter((show) => {
-      const showName = show.name.toLowerCase();
-
-      const showGenres = show.genres.join(" ").toLowerCase();
-
-      const showSummary = removeHtml(show.summary).toLowerCase();
-
-      return (
-        showName.includes(searchTerm) ||
-        showGenres.includes(searchTerm) ||
-        showSummary.includes(searchTerm)
-      );
-    });
+    const filteredShows = filterShows(searchTerm);
 
     displayShows(filteredShows);
   });
@@ -351,8 +353,8 @@ async function setup() {
 
     showShowsPage();
   } catch (error) {
+    console.error("Failed to load TV shows:", error);
     statusText.textContent = "Unable to load TV shows.";
-
     rootElem.textContent = "Sorry, we could not load the TV shows.";
   }
 }
